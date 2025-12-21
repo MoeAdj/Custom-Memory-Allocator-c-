@@ -3,8 +3,10 @@
 
 int main() {
     initALLOCATOR();
-    if (head != nullptr){
-        printBlock(head);
+
+    Block* b = getHead();
+    if (b != nullptr){
+        printBlock(b);
     } else {
         std::cout << " No blocks yet!" << std::endl;
     }
