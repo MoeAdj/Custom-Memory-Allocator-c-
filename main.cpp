@@ -3,6 +3,11 @@
 
 int main() {
     initALLOCATOR();
-    printBlock(nullptr);
-  return0;
+    if (head != nullptr){
+        printBlock(head);
+    } else {
+        std::cout << " No blocks yet!" << std::endl;
+    }
+  return 0;
+    
 }
