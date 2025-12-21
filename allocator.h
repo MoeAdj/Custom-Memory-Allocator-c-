@@ -7,8 +7,10 @@ struct Block {
     size_t size;
     bool free;
     Block* next;
+
 };
 
+Block* getHead();
 void initALLOCATOR();
 void printBlock(Block* b);
 
