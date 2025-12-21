@@ -4,6 +4,9 @@
 cosnt size_t HEAP_SIZE = 1024;
 static char heap[HEAP_SIZE];
 static Block* head = nullptr;
+Block* getHead() {
+    return head;
+}
 
 void initALLOCATOR() {
     head = (Block*)heap;
