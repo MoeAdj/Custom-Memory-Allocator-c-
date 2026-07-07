@@ -1,25 +1,105 @@
-# Custom-Memory-Allocator (c++)
+# Custom Memory Allocator (C++)
 
-this project implements a simple custom memory allocator similar to "malloc" and "free".
-the allocator manages a fixed size memory buffer and supports allocation, deallocation, and reuse of freed memory blocks.
+A simple custom memory allocator implemented in C++ that mimics the basic behavior of `malloc()` and `free()`. The allocator manages a fixed-size heap buffer and supports allocating, freeing, splitting, and reusing memory blocks.
 
-Core features (MVP) :
-1- Allocate memory from a fixed buffer. 
-2- Free memory.
-3- Reuse freed blocks.
-4- track block sizes.
+---
 
-## Goals
-understand heap memory management
-practice pointer arithmetic
-learn how allocators track free and used blocks
+## Overview
+
+This project demonstrates the fundamentals of dynamic memory management by implementing a custom allocator without relying on the standard library's memory allocation functions.
+
+The allocator maintains a linked list of memory blocks and uses a **first-fit allocation strategy** to efficiently locate available memory.
+
+---
 
 ## Features
-fixed size heap buffer
-first fit allocation strategy
-block splitting
-block reuse
 
-## how to run
+- Fixed-size heap buffer
+- First-fit allocation strategy
+- Dynamic memory allocation (`myMalloc`)
+- Memory deallocation (`myFree`)
+- Reuse of freed memory blocks
+- Block splitting to reduce wasted space
+- Coalescing (merging) adjacent free blocks
+- Block metadata tracking (size, allocation status, next pointer)
+
+---
+
+## Learning Objectives
+
+This project was built to better understand:
+
+- Heap memory management
+- Dynamic memory allocation
+- Pointer arithmetic
+- Linked lists
+- Memory fragmentation
+- Block splitting and coalescing
+- How `malloc()` and `free()` work internally
+
+---
+
+## Project Structure
+
+```
+.
+├── allocator.cpp
+├── allocator.h
+├── main.cpp
+└── README.md
+```
+
+---
+
+## How It Works
+
+1. Initialize a fixed-size heap.
+2. Search for a free block using the **First-Fit** algorithm.
+3. If the block is larger than requested, split it into two blocks.
+4. Return the usable memory to the caller.
+5. When memory is freed, mark the block as available.
+6. Merge neighboring free blocks to reduce fragmentation.
+
+---
+
+## Build and Run
+
+Compile:
+
+```bash
 g++ main.cpp allocator.cpp -o allocator
-/.allocator
+```
+
+Run:
+
+```bash
+./allocator
+```
+
+---
+
+## Example
+
+```cpp
+int* a = (int*)myMalloc(sizeof(int));
+char* b = (char*)myMalloc(100);
+
+myFree(a);
+
+double* c = (double*)myMalloc(sizeof(double));
+
+myFree(b);
+myFree(c);
+```
+
+---
+
+## Future Improvements
+
+- Best-fit allocation strategy
+- Next-fit allocation strategy
+- Memory alignment
+- `calloc()` implementation
+- `realloc()` implementation
+- Heap statistics
+- Thread-safe allocator
