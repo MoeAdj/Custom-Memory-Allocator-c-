@@ -93,7 +93,7 @@ myFree(c);
 ```
 
 ---
-terminal output :
+## terminal output 
 
 <img width="1440" height="900" alt="Screenshot 2026-07-07 at 7 28 01 PM" src="https://github.com/user-attachments/assets/2bf90efd-94f3-4d48-a922-46e08f1faed8" />
 
